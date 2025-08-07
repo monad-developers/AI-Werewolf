@@ -35,6 +35,7 @@ bun run dev:game-master
 bun run dev:player:aggressive
 bun run dev:player:conservative
 bun run dev:player:witty
+bun run dev:player:default
 ```
 
 ### Code Quality
@@ -53,6 +54,7 @@ bun run lint
 # Testing (when tests exist)
 bun test
 bun run test:packages
+bun run test:coverage
 ```
 
 ## Architecture Overview
@@ -121,6 +123,12 @@ export const Component = observer(function Component() {
 - Frontend: Global `GameMaster` instance in `packages/game-master-vite/src/stores/gameStore.ts`
 - Players maintain local state, receive updates via API
 - State sync through HTTP endpoints, no WebSocket
+
+## Player Configuration
+AI players run on ports 3001-3006 with personalities defined in YAML configs:
+- **Port 3001-3006**: Individual AI players with unique personalities
+- Config files: `config/player[1-6].yaml`
+- Each player has strategy (aggressive/conservative/balanced), speech style (casual/formal/witty)
 
 ## UI Components
 - **Game Controls**: Blue create, green start, purple next phase, red end buttons
