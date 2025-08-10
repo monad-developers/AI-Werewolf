@@ -1,124 +1,124 @@
-# AI狼人杀启动脚本
+# AI Werewolf Launch Scripts
 
-## 📁 文件说明
+## 📁 File Description
 
-- `start-players.sh` - Linux/Mac生产模式启动脚本
-- `start-players.bat` - Windows生产模式启动脚本  
-- `dev-players.sh` - Linux/Mac开发模式启动脚本
+- `start-players.sh` - Linux/Mac production mode startup script
+- `start-players.bat` - Windows production mode startup script  
+- `dev-players.sh` - Linux/Mac development mode startup script
 
-## 🚀 使用方法
+## 🚀 Usage
 
-### 方法1: 使用npm脚本 (推荐)
+### Method 1: Using npm scripts (Recommended)
 
 ```bash
-# 开发模式启动所有6个AI玩家
+# Start all 6 AI players in development mode
 pnpm dev:all-players
 
-# 生产模式启动所有6个AI玩家 (需先构建)
+# Start all 6 AI players in production mode (build required first)
 pnpm build
 pnpm start:all-players
 
-# 同时启动游戏主进程和所有AI玩家
+# Start both game master process and all AI players simultaneously
 pnpm dev:game
 ```
 
-### 方法2: 直接运行脚本
+### Method 2: Run scripts directly
 
 ```bash
-# Linux/Mac - 开发模式
+# Linux/Mac - Development mode
 ./scripts/dev-players.sh
 
-# Linux/Mac - 生产模式  
+# Linux/Mac - Production mode  
 ./scripts/start-players.sh
 
-# Windows - 生产模式
+# Windows - Production mode
 scripts\start-players.bat
 ```
 
-## 🎮 AI玩家配置
+## 🎮 AI Player Configuration
 
-每个AI玩家都有独特的个性和配置：
+Each AI player has unique personality and configuration:
 
-| 端口 | 玩家名称 | 个性特点 | 策略 | 说话风格 | AI模型 |
-|------|----------|----------|------|----------|--------|
-| 3001 | 智能分析师 | 理性分析型，善于逻辑推理 | balanced | casual | claude-3-haiku |
-| 3002 | 狼王 | 激进型，敢于质疑攻击 | aggressive | formal | gpt-4 |
-| 3003 | 守护者 | 保守稳重，观察思考 | conservative | formal | claude-3.5-sonnet |
-| 3004 | 幽默大师 | 风趣幽默，善于化解紧张 | balanced | witty | gpt-3.5-turbo |
-| 3005 | 侦探 | 逻辑推理强，专注事实分析 | balanced | formal | claude-3-haiku |
-| 3006 | 新手村民 | 新手型，容易被误导 | conservative | casual | gpt-3.5-turbo |
+| Port | Player Name | Personality | Strategy | Speaking Style | AI Model |
+|------|-------------|-------------|----------|----------------|----------|
+| 3001 | Smart Analyst | Rational analytical type, good at logical reasoning | balanced | casual | claude-3-haiku |
+| 3002 | Wolf King | Aggressive type, dares to question and attack | aggressive | formal | gpt-4 |
+| 3003 | Guardian | Conservative and steady, observes and thinks | conservative | formal | claude-3.5-sonnet |
+| 3004 | Humor Master | Witty and humorous, good at defusing tension | balanced | witty | gpt-3.5-turbo |
+| 3005 | Detective | Strong logical reasoning, focuses on fact analysis | balanced | formal | claude-3-haiku |
+| 3006 | Newbie Villager | Newbie type, easily misled | conservative | casual | gpt-3.5-turbo |
 
-## 📋 状态监控
+## 📋 Status Monitoring
 
-启动后可以通过以下地址查看各AI玩家状态：
+After startup, you can check each AI player's status at:
 
-- 智能分析师: http://localhost:3001/api/player/status
-- 狼王: http://localhost:3002/api/player/status
-- 守护者: http://localhost:3003/api/player/status
-- 幽默大师: http://localhost:3004/api/player/status
-- 侦探: http://localhost:3005/api/player/status
-- 新手村民: http://localhost:3006/api/player/status
+- Smart Analyst: http://localhost:3001/api/player/status
+- Wolf King: http://localhost:3002/api/player/status
+- Guardian: http://localhost:3003/api/player/status
+- Humor Master: http://localhost:3004/api/player/status
+- Detective: http://localhost:3005/api/player/status
+- Newbie Villager: http://localhost:3006/api/player/status
 
-## 📝 日志文件
+## 📝 Log Files
 
-所有日志文件保存在 `logs/` 目录下：
+All log files are saved in the `logs/` directory:
 
-- `player1.log` - 智能分析师日志
-- `player2.log` - 狼王日志
-- `player3.log` - 守护者日志
-- `player4.log` - 幽默大师日志
-- `player5.log` - 侦探日志
-- `player6.log` - 新手村民日志
+- `player1.log` - Smart Analyst logs
+- `player2.log` - Wolf King logs
+- `player3.log` - Guardian logs
+- `player4.log` - Humor Master logs
+- `player5.log` - Detective logs
+- `player6.log` - Newbie Villager logs
 
-开发模式日志文件后缀为 `-dev.log`
+Development mode log files have the suffix `-dev.log`
 
-## 🛑 停止AI玩家
+## 🛑 Stop AI Players
 
 ### Linux/Mac
-按 `Ctrl+C` 停止脚本，会自动清理所有启动的进程
+Press `Ctrl+C` to stop the script, which will automatically clean up all started processes
 
 ### Windows
-关闭命令行窗口，或手动关闭各个AI玩家的cmd窗口
+Close the command line window, or manually close each AI player's cmd window
 
-## ⚙️ 配置文件
+## ⚙️ Configuration Files
 
-所有配置文件位于 `config/` 目录：
+All configuration files are located in the `config/` directory:
 
-- `player1.json` - 智能分析师配置
-- `player2.json` - 狼王配置
-- `player3.json` - 守护者配置
-- `player4.json` - 幽默大师配置
-- `player5.json` - 侦探配置
-- `player6.json` - 新手村民配置
+- `player1.json` - Smart Analyst configuration
+- `player2.json` - Wolf King configuration
+- `player3.json` - Guardian configuration
+- `player4.json` - Humor Master configuration
+- `player5.json` - Detective configuration
+- `player6.json` - Newbie Villager configuration
 
-你可以修改这些配置文件来调整AI玩家的行为特点。
+You can modify these configuration files to adjust the AI players' behavioral characteristics.
 
-## 🔧 故障排除
+## 🔧 Troubleshooting
 
-### 端口被占用
-如果某个端口被占用，修改对应的配置文件中的端口号。
+### Port Already in Use
+If a port is already in use, modify the port number in the corresponding configuration file.
 
-### AI API失败
-- 检查环境变量中的API密钥设置
-- AI服务会自动降级到预设回复，不影响游戏进行
+### AI API Failure
+- Check API key settings in environment variables
+- AI service will automatically downgrade to preset replies, which won't affect game progress
 
-### 进程启动失败
-- 查看对应的日志文件获取详细错误信息
-- 确保已正确安装依赖：`pnpm install`
-- 生产模式需要先构建：`pnpm build`
+### Process Startup Failure
+- Check the corresponding log file for detailed error information
+- Ensure dependencies are properly installed: `pnpm install`
+- Production mode requires building first: `pnpm build`
 
-## 🎯 测试示例
+## 🎯 Test Example
 
-启动后可以测试AI玩家的发言功能：
+After startup, you can test the AI player's speaking function:
 
 ```bash
-# 测试智能分析师发言
+# Test Smart Analyst speech
 curl -X POST http://localhost:3001/api/player/speak \
   -H "Content-Type: application/json" \
   -d '{
-    "otherSpeeches": ["player2: 我觉得player3很可疑"],
-    "allSpeeches": ["player1: 大家好", "player2: 我觉得player3很可疑"]
+    "otherSpeeches": ["player2: I think player3 is suspicious"],
+    "allSpeeches": ["player1: Hello everyone", "player2: I think player3 is suspicious"]
   }'
 ```
 
-每个AI玩家会根据自己的个性特点生成不同风格的回应。
+Each AI player will generate different styles of responses based on their personality traits.
