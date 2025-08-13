@@ -1,0 +1,10 @@
+# Game Master Configuration
+# This file defines the game settings and available AI players for the werewolf game
+
+players:
+  - http://localhost:3001
+  - http://localhost:3002
+  - http://localhost:3003
+  - http://localhost:3004
+  - http://localhost:3005
+  - http://localhost:3006

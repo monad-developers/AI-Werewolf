@@ -1,0 +1,15 @@
+server:
+  port: 3001
+  host: "0.0.0.0"
+
+ai:
+  maxTokens: 5000
+  temperature: 0.8
+  provider: "openrouter"
+
+game:
+  personality: "理性分析型玩家，善于逻辑推理，不轻易相信他人但也不会过度怀疑"
+  strategy: "balanced"
+
+logging:
+  enabled: true
