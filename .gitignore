@@ -22,7 +22,7 @@ yarn-error.log*
 pnpm-debug.log*
 
 # Runtime generated configs
-config/
+/config
 
 # Lock files (项目使用Bun)
 package-lock.json
