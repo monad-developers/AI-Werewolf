@@ -1,181 +1,182 @@
-# 🐺 AI 狼人杀游戏框架
+# 🐺 Kerangka Permainan AI Werewolf (AI 狼人杀)
 
-一个基于 AI 的多人狼人杀游戏框架，采用 monorepo 架构，支持多个具有独特个性的 AI 玩家进行游戏。
+Sebuah kerangka permainan Werewolf berbasis AI untuk banyak pemain dengan arsitektur monorepo, mendukung beberapa pemain AI yang memiliki kepribadian unik.
 
-## ✨ 特性
+## ✨ Fitur
 
-- 🤖 **AI 驱动**: 6 个具有不同个性和策略的 AI 玩家
-- 🎮 **完整游戏流程**: 白天讨论投票、夜晚角色技能
-- 🎭 **角色系统**: 支持村民、狼人、预言家、女巫四种角色
-- 📊 **可视化界面**: React + MobX 实时状态管理
-- 🔍 **AI 遥测**: 集成 Langfuse 进行 AI 行为分析
-- 🚀 **高性能**: 使用 Bun 运行时，无需构建步骤
+- 🤖 **Didukung AI**: 6 pemain AI dengan kepribadian dan strategi berbeda
+- 🎮 **Alur Permainan Lengkap**: Diskusi siang hari, pemungutan suara, dan keterampilan peran malam hari
+- 🎭 **Sistem Peran**: Mendukung peran Penduduk Desa, Werewolf, Peramal, dan Penyihir
+- 📊 **Antarmuka Visual**: Manajemen status real-time dengan React + MobX
+- 🔍 **Telemetri AI**: Terintegrasi Langfuse untuk analisis perilaku AI
+- 🚀 **Kinerja Tinggi**: Menggunakan runtime Bun tanpa langkah build
 
-## 🛠 技术栈
+## 🛠 Teknologi yang Digunakan
 
-- **运行时**: Bun
-- **前端**: Vite + React + MobX + TailwindCSS
-- **后端**: Express + TypeScript
-- **AI**: OpenAI SDK + 自定义个性系统
-- **监控**: Langfuse 遥测
-- **架构**: Monorepo (Bun Workspaces)
+- **Runtime**: Bun
+- **Frontend**: Vite + React + MobX + TailwindCSS
+- **Backend**: Express + TypeScript
+- **AI**: OpenAI SDK + sistem kepribadian kustom
+- **Monitoring**: Telemetri Langfuse
+- **Arsitektur**: Monorepo (Bun Workspaces)
 
-## 📦 项目结构
+## 📦 Struktur Proyek
 
 ```
 AI-Werewolf/
 ├── packages/
-│   ├── game-master-vite/   # 游戏主控前端
-│   └── player/              # AI 玩家服务器
+│   ├── game-master-vite/   # Frontend pengendali permainan
+│   └── player/              # Server pemain AI
 ├── shared/
-│   ├── types/               # 共享类型定义
-│   ├── lib/                 # 共享工具库
-│   └── prompts/             # AI 提示模板
-├── config/                  # 玩家配置文件
-└── scripts/                 # 启动脚本
+│   ├── types/               # Definisi tipe bersama
+│   ├── lib/                 # Library utilitas bersama
+│   └── prompts/             # Template prompt AI
+├── config/                  # File konfigurasi pemain
+└── scripts/                 # Skrip pemulaan
 ```
 
-## 🚀 快速开始
+## 🚀 Memulai
 
-### 前置要求
+### Prasyarat
 
 - Node.js 18+
 - Bun 1.0+
-- OpenAI API Key
+- Kunci API OpenAI
 
-### 安装
+### Instalasi
 
 ```bash
-# 克隆仓库
+# Klon repositori
 git clone https://github.com/yourusername/AI-Werewolf.git
 cd AI-Werewolf
 
-# 安装依赖
+# Pasang dependensi
 bun install
 
-# 配置环境变量
+# Konfigurasi variabel lingkungan
 cp .env.example .env
-# 编辑 .env 文件，添加你的 OpenAI API Key
+# Edit file .env, tambahkan kunci API OpenAI Anda
 ```
 
-### 启动游戏
+### Memulai Permainan
 
 ```bash
-# 启动所有 AI 玩家（端口 3001-3006）
+# Mulai semua pemain AI (port 3001-3006)
 bun run dev:players
 
-# 新开终端，启动游戏主控界面（端口 3000）
+# Di terminal baru, mulai antarmuka pengendali permainan (port 3000)
 bun run dev:game-master
 ```
 
-访问 http://localhost:3000 开始游戏！
+Kunjungi http://localhost:3000 untuk memulai permainan!
 
-## 🎮 游戏流程
+## 🎮 Alur Permainan
 
-1. **创建游戏**: 点击"创建新游戏"按钮
-2. **添加玩家**: 系统自动添加 6 个 AI 玩家
-3. **分配角色**: 随机分配狼人、预言家、女巫和村民
-4. **游戏循环**:
-   - 🌞 白天: 玩家讨论并投票放逐
-   - 🌙 夜晚: 特殊角色使用技能
-5. **胜利条件**:
-   - 村民阵营: 消灭所有狼人
-   - 狼人阵营: 狼人数量 ≥ 村民数量
+1. **Buat Permainan**: Klik tombol "Buat Permainan Baru"
+2. **Tambahkan Pemain**: Sistem otomatis menambahkan 6 pemain AI
+3. **Tetapkan Peran**: Pembagian acak peran Werewolf, Peramal, Penyihir, dan Penduduk Desa
+4. **Siklus Permainan**:
+   - 🌞 Siang Hari: Pemain berdiskusi dan memilih untuk mengusir
+   - 🌙 Malam Hari: Peran spesial menggunakan keterampilan
+5. **Kondisi Kemenangan**:
+   - Faksi Penduduk Desa: Eliminasi semua Werewolf
+   - Faksi Werewolf: Jumlah Werewolf ≥ jumlah Penduduk Desa
 
-## 🤖 AI 玩家配置
+## 🤖 Konfigurasi Pemain AI
 
-每个 AI 玩家都有独特的个性设置：
+Setiap pemain AI memiliki pengaturan kepribadian unik:
 
-| 端口 | 玩家 | 策略类型 | 说话风格 | 特点 |
-|------|------|----------|----------|------|
-| 3001 | 玩家1 | balanced | casual | 理性分析型 |
-| 3002 | 玩家2 | aggressive | formal | 激进攻击型 |
-| 3003 | 玩家3 | conservative | formal | 保守稳重型 |
-| 3004 | 玩家4 | balanced | witty | 幽默风趣型 |
-| 3005 | 玩家5 | balanced | formal | 逻辑推理型 |
-| 3006 | 玩家6 | conservative | casual | 新手谨慎型 |
+| Port | Pemain | Tipe Strategi | Gaya Bicara | Karakteristik |
+|------|--------|---------------|-------------|---------------|
+| 3001 | Pemain1 | Seimbang      | Kasual      | Analitis rasional |
+| 3002 | Pemain2 | Agresif       | Formal      | Tipe penyerang |
+| 3003 | Pemain3 | Konservatif   | Formal      | Tipe hati-hati |
+| 3004 | Pemain4 | Seimbang      | Jenaka      | Humoris |
+| 3005 | Pemain5 | Seimbang      | Formal      | Penalaran logis |
+| 3006 | Pemain6 | Konservatif   | Kasual      | Pemula hati-hati |
 
-## 🔧 开发命令
+## 🔧 Perintah Pengembangan
 
-### 开发模式
+### Mode Pengembangan
 
 ```bash
-# 启动所有 AI 玩家
+# Mulai semua pemain AI
 bun run dev:players
 
-# 启动游戏主控
+# Mulai pengendali permainan
 bun run dev:game-master
 
-# 启动特定个性的玩家
+# Mulai pemain dengan kepribadian spesifik
 bun run dev:player:aggressive
 bun run dev:player:conservative
 bun run dev:player:witty
 ```
 
-### 代码质量
+### Kualitas Kode
 
 ```bash
-# 类型检查
+# Pemeriksaan tipe
 bun run typecheck
 
-# 代码规范检查
+# Pemeriksaan standar kode
 bun run lint
 
-# 运行测试
+# Jalankan pengujian
 bun test
 
-# 测试覆盖率
+# Cakupan pengujian
 bun run test:coverage
 ```
 
-## 📊 监控与日志
+## 📊 Monitoring & Log
 
-### AI 玩家状态
+### Status Pemain AI
 
-每个 AI 玩家都提供状态接口：
+Setiap pemain AI menyediakan antarmuka status:
 
 - http://localhost:3001/api/player/status
 - http://localhost:3002/api/player/status
 - ... (3003-3006)
 
-### 日志文件
+### File Log
 
-开发模式日志保存在 `logs/` 目录：
+Log mode pengembangan disimpan di direktori `logs/`:
 
-- `player1-dev.log` - 玩家1日志
-- `player2-dev.log` - 玩家2日志
-- ... (player3-6)
-- `game-master-dev.log` - 游戏主控日志
+- `player1-dev.log` - Log Pemain1
+- `player2-dev.log` - Log Pemain2
+- ... (pemain3-6)
+- `game-master-dev.log` - Log pengendali permainan
 
-## 🎯 核心功能
+## 🎯 Fitur Inti
 
-### 角色系统
+### Sistem Peran
 
-- **村民** 👤: 白天投票，无特殊技能
-- **狼人** 🐺: 夜晚击杀，知道队友身份
-- **预言家** 🔮: 每晚查验一名玩家身份
-- **女巫** 🧪: 拥有解药和毒药各一瓶
+- **Penduduk Desa** 👤: Memilih di siang hari, tanpa keterampilan khusus
+- **Werewolf** 🐺: Membunuh di malam hari, mengetahui identitas rekan
+- **Peramal** 🔮: Memeriksa identitas satu pemain setiap malam
+- **Penyihir** 🧪: Memiliki satu ramuan penawar dan satu racun
 
-### 游戏阶段
+### Tahap Permainan
 
-- **准备阶段**: 等待玩家加入
-- **夜晚阶段**: 特殊角色行动
-- **白天讨论**: AI 玩家自由发言
-- **投票阶段**: 投票放逐可疑玩家
-- **游戏结束**: 判定胜利条件
+- **Tahap Persiapan**: Menunggu pemain bergabung
+- **Tahap Malam**: Aksi peran spesial
+- **Diskusi Siang Hari**: Pemain AI berbicara bebas
+- **Tahap Pemungutan Suara**: Memilih untuk mengusir pemain mencurigakan
+- **Akhir Permainan**: Mengevaluasi kondisi kemenangan
 
-### AI 决策系统
-- 个性化提示工程
-- 上下文感知决策
-- 策略性投票逻辑
+### Sistem Keputusan AI
+- Rekayasa prompt kepribadian
+- Pengambilan keputusan sadar konteks
+- Logika pemungutan suara strategis
 
-## 等待完成功能
-- [ ] 游戏结束时AI评分
-- [ ] 遗言
-- [ ] 狼队夜晚交流功能
-- [ ] 添加守卫，猎人等角色
-- [ ] 9人游戏模式
-- [ ] 提升UI/UX
-## 🤝 贡献
+## ⏳ Fitur yang Akan Datang
+- [ ] Penilaian AI saat permainan berakhir
+- [ ] Kata perpisahan pemain yang dieliminasi
+- [ ] Fungsi komunikasi tim Werewolf di malam hari
+- [ ] Penambahan peran Penjaga, Pemburu, dll.
+- [ ] Mode permainan 9 pemain
+- [ ] Peningkatan UI/UX
 
-欢迎提交 Pull Request 或创建 Issue！
+## 🤝 Berkontribusi
+
+Kontribusi melalui Pull Request atau Issue sangat diterima!
