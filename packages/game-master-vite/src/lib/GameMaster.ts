@@ -626,8 +626,8 @@ export class GameMaster {
       // 好人胜利：所有狼人被消灭
       winCondition = WinCondition.VILLAGERS_WIN;
     } else if (totalPlayers === 6) {
-      // 6人局：狼人需要杀掉所有好人才能获胜
-      if (aliveVillagers.length === 0) {
+      // 6人局：狼人数量大于等于好人数量时狼人获胜（1对1时狼人胜）
+      if (aliveWerewolves.length >= aliveVillagers.length) {
         winCondition = WinCondition.WEREWOLVES_WIN;
       } else {
         winCondition = WinCondition.ONGOING;

@@ -10,7 +10,9 @@ export function getPlayerUrls(): string[] {
     'http://localhost:3003',
     'http://localhost:3004',
     'http://localhost:3005',
-    'http://localhost:3006'
+    'http://localhost:3006',
+    'http://localhost:3007',
+    'http://localhost:3008'
   ];
 
   // Check if there's a custom configuration in environment variables

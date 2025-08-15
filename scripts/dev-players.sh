@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # AI狼人杀 - 开发模式AI玩家启动脚本
-# 仅启动6个AI玩家进程
+# 启动8个AI玩家进程
 
 echo "🤖 AI狼人杀玩家启动（开发模式）"
 echo "=============================="
@@ -66,6 +66,8 @@ declare -a PLAYERS=(
     "player4:玩家4:3004"
     "player5:玩家5:3005"
     "player6:玩家6:3006"
+    "player7:玩家7:3007"
+    "player8:玩家8:3008"
 )
 
 # 启动每个玩家
@@ -101,6 +103,8 @@ echo "   玩家3: http://localhost:3003/api/player/status"
 echo "   玩家4: http://localhost:3004/api/player/status"
 echo "   玩家5: http://localhost:3005/api/player/status"
 echo "   玩家6: http://localhost:3006/api/player/status"
+echo "   玩家7: http://localhost:3007/api/player/status"
+echo "   玩家8: http://localhost:3008/api/player/status"
 echo ""
 echo "📋 日志文件: $LOG_DIR/ (后缀 -dev.log)"
 echo ""
