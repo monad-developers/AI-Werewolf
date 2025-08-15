@@ -619,34 +619,12 @@ export class GameMaster {
     const alivePlayers = this.players.filter(p => p.isAlive);
     const aliveWerewolves = alivePlayers.filter(p => p.role === Role.WEREWOLF);
     const aliveVillagers = alivePlayers.filter(p => p.role !== Role.WEREWOLF);
-    const totalPlayers = this.players.length;
 
-    let winCondition: WinCondition;
-    if (aliveWerewolves.length === 0) {
-      // 好人胜利：所有狼人被消灭
-      winCondition = WinCondition.VILLAGERS_WIN;
-    } else if (totalPlayers === 6) {
-      // 6人局：狼人数量大于等于好人数量时狼人获胜（1对1时狼人胜）
-      if (aliveWerewolves.length >= aliveVillagers.length) {
-        winCondition = WinCondition.WEREWOLVES_WIN;
-      } else {
-        winCondition = WinCondition.ONGOING;
-      }
-    } else if (totalPlayers >= 9) {
-      // 9人及以上：狼人数量大于等于好人数量时狼人获胜
-      if (aliveWerewolves.length >= aliveVillagers.length) {
-        winCondition = WinCondition.WEREWOLVES_WIN;
-      } else {
-        winCondition = WinCondition.ONGOING;
-      }
-    } else {
-      // 其他人数：狼人数量大于等于好人数量时狼人获胜（默认规则）
-      if (aliveWerewolves.length >= aliveVillagers.length) {
-        winCondition = WinCondition.WEREWOLVES_WIN;
-      } else {
-        winCondition = WinCondition.ONGOING;
-      }
-    }
+    // 游戏胜利条件判定：简单清晰
+    const winCondition: WinCondition = 
+      aliveWerewolves.length === 0 ? WinCondition.VILLAGERS_WIN :
+      aliveWerewolves.length >= aliveVillagers.length ? WinCondition.WEREWOLVES_WIN :
+      WinCondition.ONGOING;
 
     // 添加游戏结束的系统消息
     if (winCondition !== WinCondition.ONGOING) {
