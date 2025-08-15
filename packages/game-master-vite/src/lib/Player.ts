@@ -9,7 +9,11 @@ import {
   type SeerAbilityResponse,
   WerewolfNightActionSchema, 
   WitchNightActionSchema, 
-  SeerNightActionSchema 
+  SeerNightActionSchema,
+  SpeechResponseSchema,
+  VotingResponseSchema,
+  type SpeechResponseType,
+  type VotingResponseType
 } from '@ai-werewolf/types';
 import { PlayerAPIClient } from './PlayerAPIClient';
 import { GameMaster } from './GameMaster';
@@ -37,14 +41,30 @@ export abstract class BasePlayer {
     return this.apiClient.useAbility(abilityParams);
   };
 
-  async vote(gameMaster: GameMaster): Promise<any> {
+  async vote(gameMaster: GameMaster): Promise<VotingResponseType | null> {
     const voteParams = this.buildContext(gameMaster);
-    return this.apiClient.vote(voteParams);
+    const response = await this.apiClient.vote(voteParams);
+    
+    if (response) {
+      // 使用 zod 验证返回结果
+      const validatedResponse = VotingResponseSchema.parse(response);
+      return validatedResponse;
+    }
+    
+    return null;
   }
 
-  async speak(gameMaster: GameMaster): Promise<any> {
+  async speak(gameMaster: GameMaster): Promise<SpeechResponseType | null> {
     const speechParams = this.buildContext(gameMaster);
-    return this.apiClient.speak(speechParams);
+    const response = await this.apiClient.speak(speechParams);
+    
+    if (response) {
+      // 使用 zod 验证返回结果
+      const validatedResponse = SpeechResponseSchema.parse(response);
+      return validatedResponse;
+    }
+    
+    return null;
   }
 
   async startGame(teammates: PlayerId[]): Promise<any> {
